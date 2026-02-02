@@ -1,0 +1,139 @@
+---
+const steps = [
+  {
+    title: 'Open Your Browser',
+    description: `
+      Begin by opening your preferred web browser (Chrome, Firefox, etc.) on your Android device.
+      Visit the <a
+        href="https://lg999bet.com/"
+        class="text-emerald-400 underline hover:text-emerald-300"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        official LG999 website
+      </a> to get the download link.
+    `
+  },
+  {
+    title: 'Download the APK',
+    description:
+      'On the homepage, you will find the link for the Android APK file. Tap on it, and it will start immediately.'
+  },
+  {
+    title: 'Allow Installation from Unknown Sources',
+    description:
+      'Android devices usually block apps from outside the Play Store for security. To install the APK, go to your device’s Settings > Security and enable the option to install from Unknown Sources.'
+  },
+  {
+    title: 'Install the APK',
+    description:
+      'Once the APK is installed, open the folder and tap the APK file to begin the installation process. Follow the prompts to complete the installation.'
+  },
+  {
+    title: 'Open and Enjoy',
+    description:
+      'After installation, tap the LG999 Game icon on your home screen or App drawer. Open the app, log in, and start exploring the fun games and rewards.'
+  }
+];
+---
+
+<section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 overflow-hidden">
+
+  <!-- Glow blobs -->
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-20 left-20 w-72 h-72 bg-emerald-500 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-72 h-72 bg-yellow-500 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="mb-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        How to Download and Install the
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">
+          LG999 Game
+        </span>
+      </h1>
+
+      <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mb-8"></div>
+
+      <p class="text-slate-300 text-lg  leading-relaxed">
+        If you want to download the newest online earning app to play exciting games and win real
+        money from the comfort of your home,the
+        <a href="https://lg999bet.com" class="text-emerald-400 underline">
+        LG999 
+        </a> is the perfect platform for you. Popular in
+        Pakistan in 2026, it offers a wide variety of games such as Fortune Gems, Mines, Aviator,
+        Crash, and more.
+      </p>
+
+      <p class="text-slate-400 text-lg  mt-6 leading-relaxed">
+        Whether you are using an Android phone, an iOS device, or a laptop, getting LG999 is quick
+        and easy. Below is a detailed guide on how to get started on your device.
+      </p>
+    </div>
+
+    <!-- Android Section -->
+    <div class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        How to Download the LG999 App on
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">
+          Android
+        </span>
+      </h2>
+
+      <p class="text-slate-300 max-w-3xl mb-12">
+        LG999 provides an APK file for Android devices, allowing you to download the app directly
+        from the official website. Follow the steps below to install it safely.
+      </p>
+
+      <!-- Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {steps.map((step, index) => (
+          <div class="relative bg-slate-800/40 backdrop-blur border border-slate-700 rounded-2xl p-8 hover:border-emerald-500/50 transition">
+            <span class="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold flex items-center justify-center shadow-lg">
+              {index + 1}
+            </span>
+            <h3 class="text-xl font-bold text-white mb-3">{step.title}</h3>
+           <p
+            class="text-slate-300 text-sm leading-relaxed"
+            set:html={step.description}
+          />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Why Choose -->
+    <div class="bg-slate-800/40 backdrop-blur border border-slate-700 rounded-3xl p-10 mb-20">
+      <h2 class="text-3xl font-bold text-white mb-6">
+        Why Choose LG999 for Mobile and Desktop Gaming?
+      </h2>
+
+      <p class="text-slate-300 text-lg leading-relaxed mb-6">
+        LG999 is an innovative platform that allows users to engage in various games and activities
+        that let you earn real money. The platform is secure, easy to navigate, and offers fast
+        payouts, making it a top choice for mobile and desktop gaming enthusiasts alike.
+      </p>
+
+      <p class="text-slate-300 text-lg leading-relaxed">
+        With popular games like Aviator, Mines, and Fortune Gems, LG999 guarantees a thrilling
+        and rewarding gaming experience.
+      </p>
+    </div>
+
+    <!-- Conclusion -->
+    <div>
+      <h2 class="text-3xl font-bold text-white mb-6">Conclusion</h2>
+      <p class="text-slate-300 text-lg  leading-relaxed">
+        Downloading LG999 on Android, iOS, or a laptop is a simple and hassle-free process.
+        By following the steps above, you can start playing your favorite games in no time.
+        Whether you want to relax, have fun, or earn extra cash, LG999 offers a variety of
+        games to suit your preferences. Start your gaming journey today and enjoy the thrill
+        of winning real money.
+      </p>
+    </div>
+
+  </div>
+</section>

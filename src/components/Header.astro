@@ -1,0 +1,136 @@
+---
+// Header.astro
+
+import Image from 'astro/components/Image.astro';
+import logo from '../assets/LG999-Bet-Game.webp';
+
+
+const navLinks = [
+  { label: 'HOME', href: '/' },
+  { label: 'DOWNLOAD', href: '/download' },
+  { label: 'About Us', href: '/about-us' },
+];
+---
+
+<header class="bg-[#2D3748] border-b border-[#1a252f]">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <Image
+        src={logo}
+        alt="LG999 Logo"
+        width={108}
+        height={84}
+        class="h-14 w-auto"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+      />
+      <span class="text-white text-2xl font-bold">LG 999</span>
+    </a>
+
+    <!-- Navigation Links - Hidden on mobile -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-white hover:text-[#f4c430] transition-colors font-medium">
+          {link.label}
+        </a>
+      ))}
+
+      <!-- Signup Button -->
+      <button class="bg-[#1e40af] hover:bg-[#1e3a8a] text-white font-semibold px-8 py-2 rounded transition-colors">
+        SIGNUP
+      </button>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button 
+      id="mobile-menu-btn"
+      class="md:hidden text-white" 
+      aria-label="Toggle navigation menu"
+    >
+      <svg
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Sheet -->
+  <div 
+    id="mobile-sheet"
+    class="fixed right-0 top-0 h-full w-64 z-40 md:hidden transform transition-transform duration-300 ease-in-out translate-x-full bg-[#2D3748] text-white shadow-lg flex flex-col"
+  >
+    <!-- Sheet Header -->
+    <div class="px-6 py-4 border-b border-[#1a252f] flex justify-between items-center">
+      <span class="text-lg font-semibold">Menu</span>
+      <button 
+        id="close-sheet-btn"
+        class="text-white"
+        aria-label="Close menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sheet Links -->
+    <nav class="flex flex-col gap-1 flex-1 overflow-y-auto">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="px-6 py-3 text-base font-medium text-white hover:bg-[#1a252f] hover:text-[#f4c430] transition-all"
+        >
+          {link.label}
+        </a>
+      ))}
+      <button class="mx-6 mt-4 bg-[#1e40af] hover:bg-[#1e3a8a] text-white font-semibold px-8 py-2 rounded transition-colors w-auto">
+        SIGNUP
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  a {
+    transition: all 0.3s ease;
+  }
+</style>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileSheet = document.getElementById('mobile-sheet');
+  const closeSheetBtn = document.getElementById('close-sheet-btn');
+  const sheetLinks = mobileSheet?.querySelectorAll('nav a, button');
+
+  function openSheet() {
+    mobileSheet?.classList.remove('translate-x-full');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSheet() {
+    mobileSheet?.classList.add('translate-x-full');
+    document.body.style.overflow = 'auto';
+  }
+
+  mobileMenuBtn?.addEventListener('click', openSheet);
+  closeSheetBtn?.addEventListener('click', closeSheet);
+
+  sheetLinks?.forEach(link => {
+    link.addEventListener('click', closeSheet);
+  });
+</script>

@@ -1,0 +1,36 @@
+---
+const footerLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'Contact Us', href: '/contact-us' },
+  { label: 'Disclaimer', href: '/disclaimer' },
+
+];
+---
+
+<footer class="bg-[#2D3748] text-white px-6 py-8">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <span class="text-gray-400 text-sm">© 2026 P999 Game. All rights reserved.</span>
+    </div>
+
+    <!-- Footer Links -->
+    <nav class="flex items-center gap-6">
+      {footerLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-gray-400 text-sm hover:text-primary transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+</style>

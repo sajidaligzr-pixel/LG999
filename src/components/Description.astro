@@ -1,0 +1,734 @@
+---
+
+const games = [
+  { name: 'Cricket Betting', description: 'Bet on live cricket matches and win big by predicting the outcomes of your favorite teams and tournaments.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+  { name: 'Football Betting', description: 'Place your bets on popular football leagues, including the English Premier League, La Liga, and more.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+  { name: 'Casino Games', description: 'Enjoy classic casino games like blackjack, roulette, and baccarat, offering a real casino experience.', icon: 'M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7' },
+  { name: 'Slot Machines', description: 'Spin the reels in thrilling slot machine games with exciting themes and opportunities for huge jackpots.', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+  { name: 'Card Games', description: 'Challenge yourself with a variety of card games such as poker and rummy, perfect for all skill levels.', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+  { name: 'Mines', description: "A simple yet addictive game where you can uncover hidden mines and win rewards. It's all about luck and strategy.", icon: 'M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+  { name: 'Fortune Gems', description: 'An exciting match-3 game where you match gems and uncover treasures, offering a fun and rewarding experience.', icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z' },
+  { name: 'Aviator', description: 'A popular flight-based game where you predict the altitude and cash out at the right time to maximize your earnings.', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+];
+
+const features = [
+  {
+    title: 'Legal & Licensing Information',
+    description: 'LG999 operates under a fully licensed framework, ensuring that all activities on the platform are regulated and trustworthy. You can feel secure knowing that LG999 complies with all necessary legal requirements.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+  },
+  {
+    title: 'Fair Gaming & RNG Certification',
+    description: 'One of the key features of LG999 is its commitment to fair gaming. The platform uses certified Random Number Generators (RNG) to ensure that every game outcome is completely random and fair, giving all players an equal chance of winning.',
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+  },
+  {
+    title: 'Deposits & Withdrawals',
+    description: 'This online earning App supports a variety of payment methods such as \
+    <a href="https://www.jazzcash.com.pk/" class="text-emerald-400 underline" target="_blank" rel="noopener noreferrer">JazzCash</a>, EasyPaisa, and other bank accounts, making it easy for players to deposit funds and withdraw their winnings. The App prioritizes fast payouts, ensuring that players get their earnings as quickly as possible.',
+    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+  },
+  {
+    title: 'Privacy & Security',
+    description: 'Your security is our top priority. The platform uses state-of-the-art encryption technologies to protect your personal information and financial transactions. You can rest assured knowing that your data is kept safe and secure at all times.',
+    icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'
+  },
+  {
+    title: 'Bonuses & Promotions',
+    description: 'LG999 offers exciting bonuses and promotions to keep players engaged. From welcome bonuses to daily rewards, you can earn extra cash just by playing your favorite games. These promotions add value and make the gaming experience even more rewarding.',
+    icon: 'M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7'
+  },
+  {
+    title: 'Customer Support',
+    description: 'LG999 offers excellent customer support, available 24/7 to assist with any issues or questions. Whether you have a technical issue or need assistance with your account, our support team is just a click away.',
+    icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z'
+  },
+  {
+    title: 'Referral System',
+    description: 'The referral system at LG999 allows users to earn even more by inviting friends to join the platform. You will receive rewards for each friend who signs up and starts playing, making it a great way to boost your earnings.',
+    icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
+  },
+  {
+    title: 'Terms & Conditions',
+    description: 'Before you start playing on LG999, it is important to familiarize yourself with the platform\'s terms and conditions. These are designed to protect both the players and the platform, ensuring a fair and transparent gaming environment.',
+    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Is the LG999 safe to use?',
+    answer: 'Yes, LG999 is a safe and secure platform. The app uses encryption technology to protect your data and ensure fair gaming with RNG certification.'
+  },
+  {
+    question: 'How can I withdraw my earnings?',
+    answer: 'LG999 offers fast and secure withdrawal methods. Simply go to your account, choose your preferred payment method, and request a withdrawal.'
+  },
+  {
+    question: 'Can I play on the LG999 Game APK from my mobile device?',
+    answer: 'Yes, the LG999 App is fully optimized for mobile devices, so you can play and earn on the go.'
+  },
+  {
+    question: 'What games are available on the LG999 App?',
+    answer: 'LG999 offers a variety of games, including cricket and football betting, casino games, slot machines, and card games.'
+  },
+  {
+    question: 'Are there any bonuses or promotions?',
+    answer: 'Yes, LG999 Game offers exciting bonuses and promotions, including welcome bonuses and daily rewards for active players.'
+  }
+];
+
+const responsibleGamingTips = [
+  { tip: 'Set a budget', description: 'Decide how much money you are willing to spend, and stick to it.' },
+  { tip: 'Take regular breaks', description: 'If you are playing for a long period, step away for a bit to clear your mind.' },
+  { tip: 'Understand the odds', description: 'Familiarize yourself with the games and how they work.' },
+  { tip: 'Start small', description: 'Begin with smaller bets and work your way up as you get more comfortable.' }
+];
+
+
+---
+
+<div class="bg-slate-950">
+  <!-- What is LG999 Section -->
+  <section class="relative py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">What is the <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">LG999 Game?</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+      </div>
+
+      <div class="mx-auto">
+        <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-12">
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+            LG999 is an innovative online earning platform in Pakistan where users can engage in various fun activities and earn money. With an easy-to-use interface, you can access different games such as Fortune Gems, Mines, Aviator, Money Coming, Chicken Road, and participate in other exciting challenges, and win cash rewards.
+          </p>
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+            The app is designed to cater to a wide range of users, making it a perfect choice for anyone looking to try their luck and enjoy gaming. Whether you are an experienced gamer or a beginner, the 
+            <a href="/" class="text-emerald-400 underline">
+            LG999 Game
+            </a>
+              offers something for everyone.
+          </p>
+          <p class="text-slate-300 text-lg leading-relaxed">
+            The platform also ensures fast payouts and a secure gaming experience, giving players peace of mind.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose LG999 Section -->
+  <section class="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Why Choose <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">LG999?</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+       
+      </div>
+
+      <div class="mx-auto">
+        <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-12">
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+        There are many reasons to choose LG999 Game as your preferred earning App in Pakistan. First and foremost, it provides a wide range of exciting games that are both fun and rewarding. In addition, the game is known for its fast payouts, meaning you can receive your earnings without unnecessary delays.
+          </p>
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+        The
+        <a href="/" class="text-emerald-400 underline">
+         LG 999
+        </a>
+          offers a user-friendly interface, so even beginners can easily navigate the App. Apart from this, the 24/7 customer support team is always available to help with any issues, ensuring a smooth gaming experience for all users.
+          </p>
+          <p class="text-slate-300 text-lg leading-relaxed">
+        With daily bonuses and exciting promotions, it keeps players engaged and motivated to keep playing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Features Section -->
+  <section class="relative py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Top Features of <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">LG999 Game</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {features.map((feature) => (
+          <div class="group bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800/50 hover:border-emerald-500/50 transition-all duration-300">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-yellow-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}/>
+                  </svg>
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-white mb-3">{feature.title}</h3>
+              
+                <p
+                  class="text-slate-400 leading-relaxed"
+                  set:html={feature.description}  
+                  />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Games List Section -->
+  <section class="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">List of Games in <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">LG999</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+        <p class="text-slate-300 text-lg mx-auto">
+          LG999 offers a variety of exciting games for all players, catering to different preferences and gaming styles. Whether you're into betting, skill-based games, or casino classics, LG999 has something for everyone.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {games.map((game) => (
+          <div class="group bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800/50 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2">
+            <div class="w-16 h-16 mb-6 rounded-xl bg-gradient-to-br from-emerald-500/20 to-yellow-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={game.icon}/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">{game.name}</h3>
+            <p class="text-slate-400 leading-relaxed">{game.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- How to Deposit and Withdraw Section -->
+  <section class="relative py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">How to Deposit and Withdraw Cash</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Deposit Steps -->
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-10">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Steps to Deposit Cash</h3>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                <span class="text-emerald-400 font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Log in to Your Account</h4>
+                <p class="text-slate-400">Open the App and log in with your credentials.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                <span class="text-emerald-400 font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Go to the Deposit Section</h4>
+                <p class="text-slate-400">Click on the "Deposit" option in your account settings.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                <span class="text-emerald-400 font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Choose a Payment Method</h4>
+                <p class="text-slate-400">Select your preferred payment method (JazzCash, 
+                  <a href="https://www.easypaisa.com.pk/" class="text-emerald-400 underline" target="_blank" rel="noopener noreferrer">
+                  EasyPaisa
+                  </a>,
+                  
+                  bank transfer, etc.).</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                <span class="text-emerald-400 font-bold text-sm">4</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Enter the Deposit Amount</h4>
+                <p class="text-slate-400">Input the amount you wish to deposit.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                <span class="text-emerald-400 font-bold text-sm">5</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Confirm Payment</h4>
+                <p class="text-slate-400">Verify the details and confirm the transaction.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                <span class="text-emerald-400 font-bold text-sm">6</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Start Playing</h4>
+                <p class="text-slate-400">Your deposit will be processed instantly, and you can start playing immediately.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Withdraw Steps -->
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-10">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Steps to Withdraw Cash</h3>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center">
+                <span class="text-yellow-400 font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Log in to Your Account</h4>
+                <p class="text-slate-400">Open the APK and sign in.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center">
+                <span class="text-yellow-400 font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Navigate to the Withdraw Section</h4>
+                <p class="text-slate-400">Go to the "Withdraw" option in your account settings.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center">
+                <span class="text-yellow-400 font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Choose Withdrawal Method</h4>
+                <p class="text-slate-400">Select the payment method you want to use for withdrawal.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center">
+                <span class="text-yellow-400 font-bold text-sm">4</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Enter the Amount to Withdraw</h4>
+                <p class="text-slate-400">Specify the amount you wish to withdraw from your account.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center">
+                <span class="text-yellow-400 font-bold text-sm">5</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Confirm Withdrawal</h4>
+                <p class="text-slate-400">Review the details and confirm the transaction.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center">
+                <span class="text-yellow-400 font-bold text-sm">6</span>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold mb-2">Check Your Account</h4>
+                <p class="text-slate-400">Depending on the payment method, your withdrawal will be processed and should appear within a few hours or up to 1-3 hours.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download and Install Section -->
+  <section id="download" class="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">LG999 Game Download and <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">Install Process</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+        <p class="text-slate-300 text-lg mx-auto">
+          Downloading and installing the LG999 App is easy! Just follow these steps:
+        </p>
+      </div>
+
+      <div class="mx-auto">
+        <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-10">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                <span class="text-white font-bold">1</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Go to the official website</h3>
+                <p class="text-slate-400">Visit the official LG999 website to download the latest version.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                <span class="text-white font-bold">2</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Click the "Download" button</h3>
+                <p class="text-slate-400">Select the download button for your device (Android or iOS).</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                <span class="text-white font-bold">3</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Open the downloaded file</h3>
+                <p class="text-slate-400">Follow the on-screen instructions to install the app.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                <span class="text-white font-bold">4</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Create your account</h3>
+                <p class="text-slate-400">Once installed, open the app and create your account to start playing.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 text-center">
+            <a href="https://www.111p999.com/?dl=ct7r5u" 
+           target="_blank"
+            rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+              </svg>
+              Download LG999 APK Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Register Section -->
+  <section class="relative py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">How to Register and Create an Account</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+        <p class="text-slate-300 text-lg mx-auto">
+          Creating an account on the LG999 Game App is simple and quick. Just follow these easy steps to start your gaming journey and begin earning right away.
+        </p>
+      </div>
+
+      <div class="mx-auto">
+        <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-10">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">1</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Download the App</h3>
+                <p class="text-slate-400">First, download the LG999 APK from the official website.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">2</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Open the App</h3>
+                <p class="text-slate-400">Once the APK is installed, open it on your device.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">3</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Click on "Sign Up" or "Register"</h3>
+                <p class="text-slate-400">On the home screen, you will find the option to either "Sign Up" or "Register". Tap on it to start the account creation process.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">4</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Enter Personal Details</h3>
+                <p class="text-slate-400">You'll be prompted to enter some personal information, such as your name, email address, phone number, and date of birth. Make sure all details are accurate.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">5</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Choose a Username and Password</h3>
+                <p class="text-slate-400">Create a unique username and a strong password to secure your account. Your password should include a mix of letters, numbers, and special characters for safety.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">6</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Agree to Terms and Conditions</h3>
+                <p class="text-slate-400">Carefully read the terms and conditions of LG999 Game. If you agree, check the box to confirm your acceptance.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">7</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Complete Verification</h3>
+                <p class="text-slate-400">LG999 may ask you to verify your email or phone number to ensure the security of your account. Follow the instructions sent to your email or phone to complete the verification.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">8</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Log in to Your Account</h3>
+                <p class="text-slate-400">After successful registration and verification, you can log in to your account using your username and password.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                <span class="text-white font-bold">9</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-white font-semibold mb-2 text-lg">Deposit Funds and Start Playing</h3>
+                <p class="text-slate-400">Once logged in, you can make your first deposit to fund your account. After that, you are ready to explore the games and start playing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsible Gaming Section -->
+  <section class="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Responsible Gaming <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">Tips and Tricks</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto mb-8"></div>
+        <p class="text-slate-300 text-lg mx-auto">
+          While LG999 Game offers a fun way to earn money, it is important to play responsibly. Here are some tips to keep in mind:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+        {responsibleGamingTips.map((item) => (
+          <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800/50 hover:border-yellow-500/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-white font-bold mb-2 text-lg">{item.tip}</h3>
+                <p class="text-slate-400 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Status Section -->
+  <section class="relative py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Is LG999 Game <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">Legal in Pakistan?</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto"></div>
+      </div>
+
+      <div class="mx-auto">
+        <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-12">
+          <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
+            <p>
+              The legality of online platforms like LG999 in Pakistan depends on several factors, including local regulations and the type of service provided. At the time of writing, online betting and gaming platforms are subject to specific legal considerations in Pakistan.
+            </p>
+            <p>
+              In Pakistan, online gaming platforms offering earning opportunities through skill-based games, such as LG999, may operate within a legal grey area. While gambling is prohibited in many forms under Pakistani law, platforms offering "play and win" opportunities through games that do not involve betting or wagering on games of chance may fall under different regulations.
+            </p>
+            <p>
+              It is important for users to verify whether the platform complies with local laws and regulations regarding online gaming and money transactions. Always ensure the platform you are using follows the required licensing standards to protect your interests.
+            </p>
+            <p>
+              In short, LG999 operates in Pakistan, but its legality should be checked based on the type of games offered and adherence to local legal standards. It is always recommended to review the platform's terms and conditions and local laws to ensure you are engaging with a legal and safe platform.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review Section -->
+  <section class="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">Review</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto"></div>
+      </div>
+
+      <div class="mx-auto">
+        <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 md:p-12">
+          <p class="text-slate-300 text-lg leading-relaxed mb-8">
+            After spending time on LG999 Game, we can confidently say that it is one of the best earning platforms available today. The App's wide variety of games ensures that there's something for everyone, whether you enjoy sports betting, card games, casual Jili games, or slots. The fast payouts and secure environment make it a trustworthy platform to use. Plus, with bonuses and promotions available, users are always motivated to keep playing.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Pros -->
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Pros</h3>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-slate-300">Wide variety of games</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-slate-300">Fast payouts</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-slate-300">User-friendly interface</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-slate-300">Excellent customer support</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Cons -->
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Cons</h3>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-slate-300">Limited payment options in some regions</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-emerald-500/10 to-yellow-500/10 border border-emerald-500/20 rounded-3xl p-8 md:p-12">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+          Conclusion
+        </h2>
+        <p class="text-slate-300 text-lg mb-10">
+          In conclusion, LG999 is a fantastic earning App in Pakistan that offers a wide variety of games, fast payouts, and a secure environment. With exciting bonuses, excellent 24/7 customer support, and an easy-to-use interface, it is a great choice for anyone looking to earn money while having fun.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="relative py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-yellow-400">Questions</span></h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-yellow-500 mx-auto"></div>
+      </div>
+
+      <div class="mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300">
+            <summary class="flex items-center justify-between p-6 cursor-pointer">
+              <h3 class="text-lg font-bold text-white pr-4">{faq.question}</h3>
+              <svg class="w-6 h-6 text-emerald-400 flex-shrink-0 transform group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-slate-400 leading-relaxed">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>
